@@ -2,12 +2,15 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const cors = require('cors');
+require('dotenv').config();
 
 // Import server from socket.io
 const {Server} = require('socket.io');
 
 app.use(cors());
 const server = http.createServer(app);
+
+const PORT = process.env.PORT || 3001;
 
 
 // Initialize IO
@@ -44,4 +47,4 @@ app.get('/', (req, res) => {
     res.send("Backend Working")
 })
 
-server.listen(3001, () => { console.log("server running on port 3001")})
+server.listen(PORT, () => { console.log(`server running on port ${PORT} `)})
